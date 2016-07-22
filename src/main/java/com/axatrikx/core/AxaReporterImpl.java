@@ -3,13 +3,13 @@ package com.axatrikx.core;
 import com.axatrikx.AxaReporter;
 import com.axatrikx.AxaStatus;
 import com.axatrikx.exception.MissingConfigFileException;
-import com.axatrikx.exception.UnSupportedDatabase;
+import com.axatrikx.exception.UnSupportedDatabaseException;
 
 public class AxaReporterImpl implements AxaReporter {
 
 	private DBController dbController;
 
-	public AxaReporterImpl() throws MissingConfigFileException, UnSupportedDatabase {
+	public AxaReporterImpl() throws MissingConfigFileException, UnSupportedDatabaseException, ClassNotFoundException {
 		loadConfig();
 	}
 
@@ -17,10 +17,11 @@ public class AxaReporterImpl implements AxaReporter {
 	 * Load data from config file
 	 * 
 	 * @throws MissingConfigFileException
-	 * @throws UnSupportedDatabase
+	 * @throws UnSupportedDatabaseException
+	 * @throws ClassNotFoundException 
 	 */
-	private void loadConfig() throws MissingConfigFileException, UnSupportedDatabase {
-		dbController = new DBController();
+	private void loadConfig() throws MissingConfigFileException, UnSupportedDatabaseException, ClassNotFoundException {
+		dbController = new DBFactory().getDBController();
 	}
 
 	public void setScript(String scriptName) {
