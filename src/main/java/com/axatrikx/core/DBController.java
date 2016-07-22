@@ -1,31 +1,14 @@
 package com.axatrikx.core;
 
-import com.axatrikx.exception.MissingConfigFileException;
-import com.axatrikx.exception.UnSupportedDatabase;
+import java.sql.SQLException;
 
-public class DBController {
+public interface DBController {
 
-	private String engine;
+	String getInitSQL();
 
-	DBController() throws MissingConfigFileException, UnSupportedDatabase {
-		engine = Utils.getConfig("DB_ENGINE");
-		initDatabase();
-	}
-
-	private void initDatabase() throws UnSupportedDatabase {
-		executeSQLFile(getInitFile(engine));
-	}
-
-	private void executeSQLFile(String initFile) {
-
-	}
-
-	private String getInitFile(String engine) throws UnSupportedDatabase {
-		String initFile = "";
-		if (engine.equalsIgnoreCase(Utils.POSTGRESQL))
-			initFile = Utils.POSTGRESQL_INIT;
-		else
-			throw new UnSupportedDatabase(engine);
-		return initFile;
-	}
+	void initDataBase(String host, String port, String database, String userName, String password)
+			throws SQLException;
+	
+	void executeUpdate(String statement);
+	
 }
