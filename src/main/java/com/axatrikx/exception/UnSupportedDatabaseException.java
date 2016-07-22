@@ -6,11 +6,11 @@ package com.axatrikx.exception;
  * @author amalbose
  *
  */
-public class UnSupportedDatabase extends Exception {
+public class UnSupportedDatabaseException extends Exception {
 
 	private static final long serialVersionUID = -562979900545555842L;
 
-	public UnSupportedDatabase(String database) {
+	public UnSupportedDatabaseException(String database) {
 		super("Unsupported database " + database);
 	}
 }
