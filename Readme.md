@@ -5,7 +5,7 @@
 
 ## Database configuration 
 
-###PostgreSQL
+### PostgreSQL
 
 * Create database
 
@@ -20,3 +20,8 @@
 
 `GRANT ALL PRIVILEGES ON DATABASE axadbreport TO axatrikx;`
 
+## Adding required jar files
+
+### PostGreSQL
+
+Download the postgresql jdbc driver from [here](https://jdbc.postgresql.org/download.html) and place in your classpath.
